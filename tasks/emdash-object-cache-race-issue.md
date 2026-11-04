@@ -1,5 +1,5 @@
 Upstream bug report for https://github.com/emdash-cms/emdash
-Filed as: _pending_
+Filed as: https://github.com/emdash-cms/emdash/issues/4650
 
 ---
 
@@ -79,6 +79,12 @@ This report is the content path on Postgres in a single process. The `waitForPer
 added in #4531 does not address it: waiting for the epoch write to settle does not help if the epoch
 moved too early relative to the data's visibility.
 
+I use EmDash and hit this on my own site while load-testing it; before filing I reproduced it from a clean
+clone of the reproduction repository below, and confirmed that a regression test fails without the fix and
+passes with it. AI assistance was used in preparing this report — Claude Opus 5 and Claude Opus 5.5 via
+Claude Code — for the code analysis, the reproduction scripts and the text of this issue; I reviewed, ran
+and verified all of it myself.
+
 ### Steps to reproduce
 
 Full reproduction: https://github.com/viktor-kryzhanovsky/emdash-cache-race
@@ -99,11 +105,11 @@ TOKEN=$(cat .token) READERS=32 ROUNDS=12 TIMEOUT=3000 node scripts/race-i18n.mjs
 
 ### Environment
 
-- emdash version: 1.4.0 (npm); the code path is unchanged in `main` at `44daa08`
+- emdash version: 1.4.0 (npm); the code path is unchanged in `main` at `e6397f58e`
 - Node.js version: 22.23.4
 - Runtime: Node, `@astrojs/node` 11.1.9 standalone, single process
 - Astro: 7.4.4
-- Database: PostgreSQL 18, default `READ COMMITTED`
+- Database: PostgreSQL 17.6 and 18, default `READ COMMITTED` (reproduced on both)
 - Object cache: `objectCache: memoryCache()`
 - Collection: `supports: ["seo"]`, 6 locales, one `translatable: false` field
 - OS: Ubuntu 22.04 x86_64

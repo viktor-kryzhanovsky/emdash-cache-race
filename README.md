@@ -64,4 +64,5 @@ With the patch applied, the same loaded run goes from 12 of 12 stale to 0 of 12.
 
 ## Upstream
 
-Reported at: _pending_
+- Issue: https://github.com/emdash-cms/emdash/issues/4650
+- Pull request: https://github.com/emdash-cms/emdash/pull/4651
