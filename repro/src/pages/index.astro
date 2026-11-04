@@ -1,0 +1,8 @@
+---
+import { getEmDashCollection } from "emdash";
+
+const { entries } = await getEmDashCollection("posts", { limit: 20 });
+---
+<ul>
+	{entries.map((e) => <li data-id={e.data.id}>{e.data.title}</li>)}
+</ul>

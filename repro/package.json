@@ -1,0 +1,21 @@
+{
+	"name": "emdash-object-cache-race-repro",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "astro build",
+		"start": "node ./dist/server/entry.mjs",
+		"prepare-db": "node scripts/prepare.mjs",
+		"race": "node scripts/race.mjs"
+	},
+	"dependencies": {
+		"@astrojs/node": "11.1.9",
+		"@astrojs/react": "^7.0.0",
+		"astro": "7.4.4",
+		"emdash": "1.4.0",
+		"kysely": "0.29.7",
+		"pg": "8.23.1",
+		"react": "19.2.4",
+		"react-dom": "19.2.4"
+	}
+}

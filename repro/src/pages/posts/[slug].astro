@@ -1,0 +1,7 @@
+---
+import { getEmDashEntry } from "emdash";
+
+const { entry } = await getEmDashEntry("posts", Astro.params.slug!);
+if (!entry) return new Response(null, { status: 404 });
+---
+<h1>{entry.data.title}</h1>

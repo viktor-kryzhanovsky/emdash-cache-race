@@ -1,0 +1,13 @@
+# upstream clone and packed builds (regenerate with `pnpm pack` in emdash/packages/core)
+/emdash/
+/tarballs/
+
+node_modules/
+dist/
+dist-i18n/
+.astro/
+.emdash/
+.token*
+*.log
+*.err
+.DS_Store
